@@ -1,8 +1,8 @@
-# Next.js + Supabase Auth + Langchain starter code
+# Next.js + Supabase Auth + LangGraph starter code
 
 ## Overview
 
-This project is a chatbot application built using Next.js, TypeScript, Supabase, Langchain, and FastAPI. The frontend is responsible for the user interface and handles user interactions, while the backend, powered by FastAPI + SQLAlchemy, processes chat messages using OpenAI's GPT-3.5 model and manages API endpoints. The application includes user authentication via Supabase, allowing users to sign up, log in, and manage their sessions. This architecture ensures a clear separation of concerns, with the backend handling all AI-related logic and the frontend focused on delivering a seamless user experience.
+This project is a chatbot application built using Next.js, TypeScript, Supabase, LangGraph, and FastAPI. The frontend is responsible for the user interface and handles user interactions, while the backend, powered by FastAPI + SQLAlchemy, processes chat messages using OpenAI's GPT models with LangGraph for advanced AI workflows and manages API endpoints. The application includes user authentication via Supabase, allowing users to sign up, log in, and manage their sessions. This architecture ensures a clear separation of concerns, with the backend handling all AI-related logic using LangGraph's powerful state management and workflow capabilities, while the frontend focuses on delivering a seamless user experience.
 
 ## Features
 
@@ -13,18 +13,21 @@ This project is a chatbot application built using Next.js, TypeScript, Supabase,
 - **Save Chat History**: Save the chat history for users to access later.
 - **Access Previous Chats**: Allow users to go back to any previous chat and continue the conversation.
 - **Markdown Support**: Messages can include Markdown formatting, including LaTeX for mathematical expressions.
-- **Backend API**: FastAPI backend to handle chat processing and interactions with OpenAI's GPT-3.5 model.
+- **Backend API**: FastAPI backend with LangGraph for complex AI workflows and interactions with OpenAI's GPT models.
+- **Advanced AI Workflows**: LangGraph enables multi-step reasoning, state management, and complex agent behaviors.
 
 ## Technologies Used
 
 - **Next.js**: A React framework for building server-side rendered applications.
 - **TypeScript**: A superset of JavaScript that adds static types.
-- **Langchain**: A framework for building applications with language models.
+- **LangGraph**: A framework for building stateful, multi-actor applications with LLMs.
+- **LangChain Core**: Core abstractions and schemas for working with language models.
 - **Supabase**: An open-source Firebase alternative for authentication and database management.
 - **React**: A JavaScript library for building user interfaces.
 - **Tailwind CSS**: A utility-first CSS framework for styling.
 - **Shadcn**: A component library for creating accessible and consistent UI components.
 - **FastAPI**: A modern, fast (high-performance) web framework for building APIs with Python 3.11+
+- **uv**: A fast Python package installer and resolver for dependency management.
 
 ## Getting Started
 
@@ -35,7 +38,7 @@ This project is a chatbot application built using Next.js, TypeScript, Supabase,
 - A Supabase account
 - An OpenAI account
 - Python 3.11 or later
-- Poetry (for managing Python dependencies)
+- uv (for managing Python dependencies)
 
 ### Installation
 
@@ -101,16 +104,16 @@ This project is a chatbot application built using Next.js, TypeScript, Supabase,
    cd ../backend
    ```
 
-2. Install Poetry if you haven't already:
+2. Install uv if you haven't already:
 
    ```bash
-   curl -sSL https://install.python-poetry.org | python3 -
+   curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
 
 3. Install the backend dependencies:
 
    ```bash
-   poetry install
+   uv sync
    ```
 
 4. Set up environment variables
@@ -127,7 +130,7 @@ This project is a chatbot application built using Next.js, TypeScript, Supabase,
 5. Run the FastAPI server
 
    ```bash
-   poetry run uvicorn app.main:app --reload
+   uv run uvicorn app.main:app --reload
    ```
 
 6. The FastAPI server will be running at `http://127.0.0.1:8000`.

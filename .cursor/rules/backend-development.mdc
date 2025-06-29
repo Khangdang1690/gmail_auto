@@ -1,0 +1,72 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: Backend development guidelines for FastAPI, Python, and LangGraph
+globs: ["backend/**/*.py", "backend/**/*.yml", "backend/**/*.yaml", "backend/**/*.toml"]
+---
+
+# Backend Development
+
+## File Structure
+```
+backend/app/
+├── main.py                 # FastAPI app entry
+├── api/routers/           # API endpoints
+├── models/                # Database models
+├── schemas/               # Pydantic schemas
+├── services/              # Business logic
+├── database.py            # Database setup
+└── dependencies.py        # Dependency injection
+```
+
+## Code Standards
+- Use `uv` for dependency management
+- FastAPI with async/await
+- Pydantic models for validation
+- SQLAlchemy for database operations
+- Proper error handling with HTTP exceptions
+
+## API Design
+- RESTful endpoints in `api/routers/`
+- Request/response models in `schemas/`
+- Business logic in `services/`
+- Database operations in `models/`
+
+## Dependencies
+- Keep `pyproject.toml` clean
+- Let uv handle version resolution
+- Use virtual environments
+
+## LangGraph Implementation
+- Use LangGraph for all AI workflows instead of basic LangChain
+- Implement proper state management with TypedDict
+- Create modular nodes for different AI tasks
+- Handle streaming responses properly
+- Implement error handling and recovery flows
+
+## Database & Authentication
+- SQLAlchemy for database operations
+- Alembic for database migrations
+- Supabase for authentication and user management
+- Proper JWT token validation
+- Row-level security where applicable
+
+## Error Handling & Logging
+- Raise specific exceptions (ValueError, TypeError, etc.)
+- Never catch and ignore exceptions silently
+- Use FastAPI exception handlers
+- Structured logging with proper context
+- Meaningful error messages for debugging
+
+## API Design
+- RESTful endpoints with proper HTTP methods
+- Consistent response formats
+- Proper status codes (200, 201, 400, 401, 404, 500)
+- API versioning when needed
+- Request/response validation with Pydantic
+
+
+

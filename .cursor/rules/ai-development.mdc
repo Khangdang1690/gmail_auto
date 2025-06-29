@@ -1,0 +1,70 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: AI development guidelines for LangGraph workflows and chatbot functionality
+globs: ["**/services/**/*.py", "**/langgraph/**/*.py", "**/ai/**/*.py", "**/chat/**/*.py"]
+---
+
+# AI Development with LangGraph
+
+## LangGraph Implementation
+- Use LangGraph instead of basic LangChain
+- Define clear state structures with TypedDict
+- Create focused nodes for AI tasks
+- Handle streaming responses for real-time chat
+- Implement proper error handling
+
+## Chat Service Structure
+- State management for conversation context
+- Stream responses to frontend
+- Handle multiple chat sessions
+- OpenAI integration for LLM
+- Proper message history
+
+## Code Patterns
+- Async functions for AI operations
+- Type hints for all functions
+- Error handling with proper exceptions
+- Clean state transitions
+- Modular workflow design
+
+## State Management
+- Use typed state objects (not generic dicts)
+- Minimize state size for better performance  
+- Implement state validation
+- Handle state transitions clearly
+- Document state structure and flow
+
+## Chat Implementation
+- Stream responses for better UX
+- Handle conversation context properly
+- Implement message history management
+- Support multiple conversation sessions
+- Graceful error handling for AI failures
+
+## Model Integration
+- Use OpenAI GPT models as primary LLM
+- Implement proper temperature settings (0.7-0.8 for chat)
+- Handle rate limiting and API errors
+- Implement retry logic with exponential backoff
+- Monitor token usage and costs
+
+## Performance & Scalability
+- Async processing for all AI operations
+- Proper resource cleanup
+- Memory management for long conversations
+- Caching strategies for repeated queries
+- Load balancing for multiple users
+
+## Testing AI Components
+- Unit tests for individual nodes
+- Integration tests for complete workflows
+- Mock external AI services in tests
+- Test error conditions and edge cases
+- Performance benchmarking
+
+
+

@@ -1,0 +1,72 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: Frontend development guidelines for Next.js, React, and TypeScript
+globs: ["frontend/**/*.tsx", "frontend/**/*.ts", "frontend/**/*.jsx", "frontend/**/*.js"]
+---
+
+# Frontend Development
+
+## File Structure
+```
+frontend/src/
+├── app/                    # Next.js App Router
+├── components/             # Reusable components
+├── lib/                    # Utilities
+├── utils/                  # API and helper functions
+├── types/                  # TypeScript interfaces
+└── context/                # React Context providers
+```
+
+## Code Standards
+- Use TypeScript interfaces for props
+- Components in PascalCase files
+- Use 'use client' for client components
+- Server components by default
+- Tailwind for all styling
+- shadcn/ui for UI components
+
+## State Management
+- React Context for global state
+- Local state with useState/useReducer
+- Custom hooks for reusable logic
+
+## API Integration
+- Use the existing API utilities in `utils/`
+- Handle authentication with Supabase client
+- Stream AI responses properly
+
+## React & Next.js Best Practices
+- Use App Router for all routing (not Pages Router)
+- Prefer Server Components when possible, use Client Components only when needed
+- Always add 'use client' directive at top of Client Components
+- Use TypeScript interfaces for all component props
+- Implement proper error boundaries for production
+
+## Component Architecture
+- Keep components small and focused (single responsibility)
+- Use composition over inheritance
+- Prefer functional components with hooks
+- Custom hooks for reusable logic
+- Props destructuring with TypeScript interfaces
+
+## Styling & UI
+- Tailwind CSS for all styling
+- shadcn/ui components for consistent UI
+- Responsive design mobile-first approach
+- Dark/light mode support with next-themes
+- Proper accessibility (ARIA labels, semantic HTML)
+
+## Performance
+- Use React.memo() for expensive components
+- Lazy loading with React.lazy() and Suspense
+- Image optimization with next/image
+- Font optimization with next/font
+- Bundle analysis and code splitting
+
+
+
+

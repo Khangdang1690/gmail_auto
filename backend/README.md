@@ -203,54 +203,92 @@ The messages table stores the messages exchanged during a chat session.
 
 #### Prerequisites
 
-- **Python 3.10+**: Ensure that Python is installed on your machine. You can download it from the official website.
-- **Poetry**: Poetry is used for dependency management and packaging in this project. If you don't have Poetry installed, you can install it using the following command:
+- **Python 3.11+**: Ensure that Python is installed on your machine. You can download it from the official website.
+- **uv**: A fast Python package installer and resolver. Install it using:
   ```bash
-  curl -sSL https://install.python-poetry.org | python3 -
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+  ```
+  Or on Windows:
+  ```bash
+  powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
   ```
 
-1. Clone the Repository
+### Setup Instructions
+
+1. **Clone the Repository**
 
    First, clone the project repository to your local machine:
 
    ```bash
-   git clone https://github.com/ojasskapre/nextjs-starter-template.git
-   cd nextjs-starter-template/backend
+   git clone <your-repo-url>
+   cd your-project/backend
    ```
 
-2. Set Up Environment Variables
+2. **Set Up Environment Variables**
 
-   Copy the .env.example file to create your own .env file. This file will store your environment variables, such as database connection strings and API keys.
+   Create a `.env` file in the backend directory with your configuration:
 
    ```bash
+   # Copy the example file
    cp .env.example .env
-   # Update the .env file with your specific configurations, including:
-   DATABASE_URL: Your database connection string (e.g., PostgreSQL or Supabase URL).
-   OPENAI_API_KEY: Your OpenAI API key.
-   SUPABASE_API_KEY: Your Supabase API Key
-   SUPABASE_ANON_KEY: Your Supabase Anon Key
+   # Update the .env file with your specific configurations:
+   DATABASE_URL=your_database_connection_string
+   OPENAI_API_KEY=your_openai_api_key
+   SUPABASE_URL=your_supabase_project_url
+   SUPABASE_ANON_KEY=your_supabase_anon_key
    ```
 
-3. Install Dependencies
-   Use Poetry to install all the necessary dependencies:
+3. **Install Dependencies**
+
+   Use uv to install all the necessary dependencies:
 
    ```bash
-   poetry install
+   uv sync
    ```
 
    This will create a virtual environment and install all the dependencies listed in pyproject.toml.
 
-4. Set Up the Database
-   If you are using a new database, you have to create `profiles` abd triggers with `auth.users` table manually as mentioned in Database Schema section above. Other tables will be created after running the FastAPI server
+4. **Set Up the Database**
 
-5. Run the FastAPI Server
-   You can start the FastAPI server using Uvicorn, which comes pre-installed with the dependencies:
+   If you are using a new database, you have to create `profiles` and triggers with `auth.users` table manually as mentioned in Database Schema section above. Other tables will be created after running the FastAPI server.
+
+5. **Run the FastAPI Server**
+
+   You can start the FastAPI server using uv:
 
    ```bash
-   poetry run uvicorn app.main:app --reload
+   uv run uvicorn app.main:app --reload
    ```
 
    This command will start the development server on http://localhost:8000.
 
-6. Test the API
-   You can now use tools like Postman or curl to test the API endpoints described in the API Routes section of your documentation.
+6. **Test the API**
+
+   You can now use tools like Postman or curl to test the API endpoints described in the API Routes section.
+
+## Additional uv Commands
+
+```bash
+# Install dependencies
+uv sync
+
+# Install development dependencies
+uv sync --group dev
+
+# Add a new dependency
+uv add package-name
+
+# Add a development dependency
+uv add --group dev package-name
+
+# Run commands in the virtual environment
+uv run <command>
+
+# Activate the virtual environment
+source .venv/bin/activate  # On Unix/macOS
+# or
+.venv\Scripts\activate  # On Windows
+
+# Update dependencies
+uv lock --upgrade
+```

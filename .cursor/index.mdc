@@ -1,0 +1,34 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: Main project rules for Next.js + Supabase Auth + LangGraph startup template
+globs: ["**/*"]
+---
+
+# Next.js + Supabase + LangGraph Chatbot
+
+## Project Structure
+- **Frontend**: `frontend/` - Next.js 14+ with TypeScript, Tailwind, shadcn/ui
+- **Backend**: `backend/` - FastAPI with Python 3.11+, uv dependency management
+- **AI**: LangGraph for advanced workflows and state management
+- **Database**: Supabase with SQLAlchemy
+- **Auth**: Supabase Auth with JWT tokens
+
+## Development Standards
+- Use TypeScript throughout frontend
+- Follow file structure conventions
+- Keep components in appropriate directories
+- Use proper imports and exports
+- Handle errors appropriately
+
+
+
+
+
+
+
+
+

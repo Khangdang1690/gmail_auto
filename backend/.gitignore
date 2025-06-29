@@ -116,3 +116,5 @@ Thumbs.db
 
 # SQLite database migrations
 alembic/versions/
+uv.lock
+.venv/
