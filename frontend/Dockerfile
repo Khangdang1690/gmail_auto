@@ -20,4 +20,4 @@ RUN bun run build
 EXPOSE 3000
 
 # Run the application
-CMD ["npm", "run", "start"]
+CMD ["bun", "run", "start"]

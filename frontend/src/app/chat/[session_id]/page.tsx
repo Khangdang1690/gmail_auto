@@ -2,11 +2,12 @@
 
 import ChatSection from '@/components/chat/Section';
 import { useAuth } from '@/context/AuthContext';
+import { use } from 'react';
 
-export default function Home({ params }: { params: { session_id: string } }) {
+export default function Home({ params }: { params: Promise<{ session_id: string }> }) {
   const { user } = useAuth();
 
-  const { session_id: sessionId } = params;
+  const { session_id: sessionId } = use(params);
 
   return user ? (
     <ChatSection sessionId={sessionId} />

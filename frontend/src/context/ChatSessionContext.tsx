@@ -46,7 +46,7 @@ export const ChatSessionProvider: React.FC<{ children: React.ReactNode }> = ({
       setLoading(false);
     };
     fetchChatSessions();
-  }, []);
+  }, [getToken]);
 
   const refreshChatSessions = useCallback(async () => {
     const token = await getToken();

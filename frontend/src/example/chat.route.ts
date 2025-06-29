@@ -7,7 +7,8 @@ import { Message as VercelChatMessage } from 'ai';
 
 import { ChatOpenAI } from '@langchain/openai';
 import { PromptTemplate } from '@langchain/core/prompts';
-import { HttpResponseOutputParser } from 'langchain/output_parsers';
+// HttpResponseOutputParser is not available with current packages, using basic streaming instead
+// import { HttpResponseOutputParser } from 'langchain/output_parsers';
 
 export const runtime = 'edge';
 
@@ -49,24 +50,17 @@ export async function POST(req: NextRequest) {
     });
 
     /**
-     * Chat models stream message chunks rather than bytes, so this
-     * output parser handles serialization and byte-encoding.
+     * Simple chain without streaming parser for this example
+     * For production use, consider installing the full langchain package
+     * or implementing proper streaming
      */
-    const outputParser = new HttpResponseOutputParser();
+    const chain = prompt.pipe(model);
 
-    /**
-     * Can also initialize as:
-     *
-     * import { RunnableSequence } from "@langchain/core/runnables";
-     * const chain = RunnableSequence.from([prompt, model, outputParser]);
-     */
-    const chain = prompt.pipe(model).pipe(outputParser);
-
-    const stream = await chain.stream({
+    const response = await chain.invoke({
       input: currentMessageContent,
     });
 
-    return new NextResponse(stream);
+    return NextResponse.json({ response: response.content });
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: e.status ?? 500 });
   }
