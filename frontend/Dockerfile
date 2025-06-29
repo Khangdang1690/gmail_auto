@@ -1,5 +1,5 @@
 # Use the latest official Node.js runtime as the base image
-FROM node:latest
+FROM oven/bun:latest
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -8,13 +8,13 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN bun install
 
 # Copy the rest of the application
 COPY . .
 
 # Build the application for production
-RUN npm run build
+RUN bun run build
 
 # Expose the port the app runs on
 EXPOSE 3000
